@@ -1,24 +1,16 @@
-const arr = [7,3,0,6,2,5];
-len = arr.length
-const pass = len - 1; 
-let count = 0;
+const arr = [5, 8, 1, 3, 4];
 
-function bubbleSort(array) {
-  count = 0;
-  for(let i= 0;i< len-1;i++){
-    if(arr[i] > arr[i+1]){
-      swap(i,i+1,array)
-    }else count++;
-  }    
+function bubbleSort(arr, swap) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] > arr[j]) {
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+  }
+  return arr;
 }
 
-
-function swap(i,j,arr){ 
-  let temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-}
-
-while(count <= 4)
-bubbleSort(arr);
-console.log(arr);
+document.body.innerHTML = bubbleSort(arr);
