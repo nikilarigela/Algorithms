@@ -1,14 +1,19 @@
-const arr = [5, 8, 1, 3, 4];
+const arr = [1, 6, 15, 34, 30, 26, 32, 42];
 
 function bubbleSort(arr, swap) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[i] > arr[j]) {
+  let count = 0;
+  while (count < arr.length) {
+    let swap = false;
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        swap = true;
         let temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
       }
     }
+    if (swap === false) break;
+    count++;
   }
   return arr;
 }
