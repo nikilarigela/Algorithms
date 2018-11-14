@@ -1,34 +1,25 @@
-const arr = [26,2444,35,8,89];
+const arr = [1, 6, 42, 34, 30, 26, 32, 15];
 
-function selectionSort(array) {
-    let i=0;
-    while(i < array.length-1){
-      let small = findSmall(i,arr.length,array);
-      console.log(small);
-      swap(small,i,array)
-      i++;
-    }
-}
-
-
-function swap(small,i,arr){ 
-  let temp = arr[small];
-  arr[small] = arr[i];
-  arr[i] = temp;
-}
-
-function findSmall(i,length,ar) {
-  let small = ar[i];
-  let index = i;
-  for(let k = i;k < length;k++){
-    if(small > ar[k]){
-      small = ar[k];
-      index = k;
+function smallNumber(arr, count) {
+  let index = count;
+  for (let i = count; i < arr.length; i++) {
+    if (arr[index] > arr[i]) {
+      index = i;
     }
   }
   return index;
 }
 
-selectionSort(arr);
-console.log(arr);
+function selectionSort(arr) {
+  let count = 0;
+  while (count < arr.length - 1) {
+    let tempIndex = smallNumber(arr, count);
+    let temp = arr[count];
+    arr[count] = arr[tempIndex];
+    arr[tempIndex] = temp;
+    count++;
+  }
+  return arr;
+}
 
+document.body.innerHTML = selectionSort(arr);
